@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Name List Processor</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>Name List Processor</h2>
+
+    <input type="file" id="fileInput" accept=".txt">
+    <br><br>
+    <textarea id="textInput" rows="10" cols="30" placeholder="Enter names, one per line"></textarea>
+    <br><br>
+    <button onclick="processNames()">Process Names</button>
+
+    <h3>Processed Names:</h3>
+    <table id="resultTable">
+        <tr>
+            <th>Name</th>
+            <th>Assigned Number</th>
+        </tr>
+        <!-- Rows will be added here -->
+    </table>
+
+    <script>
+        function processNames() {
+            let names = [];
+            const fileInput = document.getElementById('fileInput');
+            const textInput = document.getElementById('textInput');
+            const table = document.getElementById('resultTable');
+
+            // Clear previous results
+            table.innerHTML = "<tr><th>Name</th><th>Assigned Number</th></tr>";
+
+            if (fileInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    names = e.target.result.split('\n').map(name => name.trim());
+                    displayNames(names);
+                };
+                reader.readAsText(fileInput.files[0]);
+            } else {
+                names = textInput.value.split('\n').map(name => name.trim());
+                displayNames(names);
+            }
+        }
+
+        function displayNames(names) {
+            const table = document.getElementById('resultTable');
+            names.forEach((name, index) => {
+                if (name !== "") {
+                    let row = table.insertRow();
+                    let cell1 = row.insertCell(0);
+                    let cell2 = row.insertCell(1);
+                    cell1.innerHTML = name;
+                    cell2.innerHTML = index + 1;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
