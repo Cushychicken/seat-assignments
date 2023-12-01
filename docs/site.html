@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Name List Processor</title>
+    <title>Seat Assigner</title>
     <style>
         table, th, td {
             border: 1px solid black;
@@ -25,8 +25,8 @@
     <h3>Processed Names:</h3>
     <table id="resultTable">
         <tr>
+            <th>Seat Number</th>
             <th>Name</th>
-            <th>Assigned Number</th>
         </tr>
         <!-- Rows will be added here -->
     </table>
@@ -39,7 +39,7 @@
             const table = document.getElementById('resultTable');
 
             // Clear previous results
-            table.innerHTML = "<tr><th>Name</th><th>Assigned Number</th></tr>";
+            table.innerHTML = "<tr><th>Seat Number</th><th>Name</th></tr>";
 
             if (fileInput.files.length > 0) {
                 const reader = new FileReader();
@@ -71,8 +71,8 @@
 				let row = table.insertRow();
 				let cell1 = row.insertCell(0);
 				let cell2 = row.insertCell(1);
-				cell1.innerHTML = name;
-				cell2.innerHTML = index + 1;
+				cell1.innerHTML = index + 1;
+				cell2.innerHTML = name;
 			});
 		}
     </script>
