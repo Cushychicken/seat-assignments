@@ -3,6 +3,14 @@
 <head>
     <title>Seat Assigner</title>
     <style>
+        .container {
+            display: table;
+            width: 100%;
+        }
+        .left-column, .right-column {
+            display: table-cell;
+            vertical-align: top;
+        }
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
@@ -14,22 +22,32 @@
     </style>
 </head>
 <body>
-    <h2>Name List Processor</h2>
+	<div class="container">
+        <!-- Left Column for Input and Table -->
+        <div class="left-column">
+            <h2>The Seat Assigner</h2>
 
-    <input type="file" id="fileInput" accept=".txt">
-    <br><br>
-    <textarea id="textInput" rows="10" cols="30" placeholder="Enter names, one per line"></textarea>
-    <br><br>
-    <button onclick="processNames()">Process Names</button>
+            <input type="file" id="fileInput" accept=".txt">
+            <br><br>
+            <textarea id="textInput" rows="10" cols="30" placeholder="Enter names, one per line"></textarea>
+            <br><br>
+            <button onclick="processNames()">Process Names</button>
 
-    <h3>Processed Names:</h3>
-    <table id="resultTable">
-        <tr>
-            <th>Seat Number</th>
-            <th>Name</th>
-        </tr>
-        <!-- Rows will be added here -->
-    </table>
+            <h3>Seat Assignments:</h3>
+            <table id="resultTable">
+                <tr>
+                    <th>Seat Number</th>
+                    <th>Name</th>
+                </tr>
+                <!-- Rows will be added here -->
+            </table>
+        </div>
+
+        <!-- Right Column for Image -->
+        <div class="right-column">
+            <img src="seating.jpeg" alt="Seating Chart" style="width:100%; max-width:400px;">
+        </div>
+    </div>
 
     <script>
         function processNames() {
