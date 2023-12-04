@@ -46,10 +46,16 @@
         <!-- Right Column for Image -->
         <div class="right-column">
             <img src="seating.jpeg" alt="Seating Chart" style="width:100%; max-width:400px;">
+			<br>
+			<a href="#" onclick="showWarning()">Don't click this, Emmett.</a>
         </div>
     </div>
 
     <script>
+		function showWarning() {
+			alert("No! Emmett!! This deleted your grades!!! WE TOLD YOU NOT TO CLICK!!!1!");
+		}
+
         function processNames() {
             let names = [];
             const fileInput = document.getElementById('fileInput');
